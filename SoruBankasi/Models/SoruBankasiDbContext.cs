@@ -85,6 +85,8 @@ namespace SoruBankasi.Models
                     KullaniciAdi = "emrah",
                     Mail = "emrah@mail.com",
                     Sifre = "123",
+                    Adi="emrah",
+                    Soyadi="karaman",
                     YoneticiMi = true
                 });
 
