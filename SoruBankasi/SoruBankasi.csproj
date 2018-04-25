@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\global\css\components-rounded.min.css" />
     <Content Include="Content\assets\global\css\components.min.css" />
     <Content Include="Content\assets\global\css\plugins.min.css" />
     <Content Include="Content\assets\global\plugins\bootstrap-switch\css\bootstrap-switch.min.css" />
@@ -109,6 +110,57 @@
     <Content Include="Content\assets\global\plugins\jquery.blockui.min.js" />
     <Content Include="Content\assets\global\plugins\jquery.min.js" />
     <Content Include="Content\assets\global\plugins\js.cookie.min.js" />
+    <Content Include="Content\assets\global\plugins\select2\css\select2-bootstrap.min.css" />
+    <Content Include="Content\assets\global\plugins\select2\css\select2.min.css" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ar.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\az.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\bg.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ca.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\cs.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\da.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\de.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\el.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\en.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\es.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\et.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\eu.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\fa.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\fi.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\fr.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\gl.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\he.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\hi.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\hr.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\hu.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\id.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\is.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\it.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ja.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\km.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ko.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\lt.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\lv.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\mk.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ms.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\nb.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\nl.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\pl.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\pt-BR.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\pt.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ro.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\ru.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\sk.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\sr-Cyrl.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\sr.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\sv.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\th.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\tr.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\uk.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\vi.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\zh-CN.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\i18n\zh-TW.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\select2.full.min.js" />
+    <Content Include="Content\assets\global\plugins\select2\js\select2.min.js" />
     <Content Include="Content\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.dev.svg" />
     <Content Include="Content\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.svg" />
     <Content Include="Content\assets\global\plugins\simple-line-icons\simple-line-icons.min.css" />
@@ -118,6 +170,7 @@
     <Content Include="Content\assets\layouts\layout\css\themes\darkblue.min.css" />
     <Content Include="Content\assets\layouts\layout\img\logo.png" />
     <Content Include="Content\assets\layouts\layout\scripts\layout.min.js" />
+    <Content Include="Content\assets\pages\css\login.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -139,10 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Models\Cevaplar.cs" />
     <Compile Include="Models\Ders.cs" />
     <Compile Include="Models\Konu.cs" />
@@ -160,10 +215,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Auth\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
