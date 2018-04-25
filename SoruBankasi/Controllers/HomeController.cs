@@ -13,8 +13,9 @@ namespace SoruBankasi.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
             return View();
         }
+
+
     }
 }
