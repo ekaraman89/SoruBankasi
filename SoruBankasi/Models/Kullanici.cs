@@ -27,7 +27,6 @@ namespace SoruBankasi.Models
 
         [Required]
         [StringLength(50)]
-        [EmailAddress]
         public string Mail { get; set; }
 
         [StringLength(50)]
