@@ -12,8 +12,8 @@ namespace SoruBankasi.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            SoruBankasiDbContext db = new SoruBankasiDbContext();
-            return View(db.Ders.ToList());
+           
+            return View();
         }
     }
 }
