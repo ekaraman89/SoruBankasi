@@ -15,8 +15,10 @@ namespace SoruBankasi
 
 
             routes.MapRoute(name: "Home", url: "", defaults: new { controller = "Home", action = "Index" });
-            routes.MapRoute(name: "Login", url: "GirisYap", defaults: new { controller = "Auth", action = "Login" });
-            routes.MapRoute(name: "Logout", url: "CiksiYap", defaults: new { controller = "Auth", action = "Logout" });
+            routes.MapRoute(name: "Login", url: "GirisYap", defaults: new { controller = "Account", action = "Login" });
+            routes.MapRoute(name: "Logout", url: "CiksiYap", defaults: new { controller = "Account", action = "Logout" });
+            routes.MapRoute(name: "ProfileDetail", url: "Profil", defaults: new { controller = "Account", action = "ProfileDetail" });
+
         }
     }
 }
