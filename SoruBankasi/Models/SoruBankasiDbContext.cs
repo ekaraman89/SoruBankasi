@@ -1,9 +1,6 @@
 namespace SoruBankasi.Models
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
     using System.Collections.Generic;
 
     public partial class SoruBankasiDbContext : DbContext
