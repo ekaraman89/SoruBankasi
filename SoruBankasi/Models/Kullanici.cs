@@ -55,5 +55,13 @@ namespace SoruBankasi.Models
         public bool YoneticiMi { get; set; }
 
         public virtual ICollection<Ders> Ders { get; set; }
+
+
+        [NotMapped]
+        public string YeniSifre { get; set; }
+
+        [NotMapped]
+        [Compare("YeniSifre")]
+        public string YeniSifreTekrar { get; set; }
     }
 }
