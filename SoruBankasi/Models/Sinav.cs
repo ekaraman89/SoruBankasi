@@ -7,7 +7,7 @@ namespace SoruBankasi.Models
     [Table("Sinav")]
     public partial class Sinav
     {
-               public Sinav()
+        public Sinav()
         {
             SinavSorulari = new HashSet<SinavSorulari>();
         }
@@ -17,6 +17,6 @@ namespace SoruBankasi.Models
         [Required]
         public string SinavAdi { get; set; }
 
-                public virtual ICollection<SinavSorulari> SinavSorulari { get; set; }
+        public virtual ICollection<SinavSorulari> SinavSorulari { get; set; }
     }
 }

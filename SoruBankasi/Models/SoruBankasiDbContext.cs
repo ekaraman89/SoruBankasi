@@ -24,10 +24,6 @@ namespace SoruBankasi.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ders>()
-                .Property(e => e.DersAdi)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Ders>()
                 .HasMany(e => e.Konu)
                 .WithRequired(e => e.Ders)
                 .WillCascadeOnDelete(false);
@@ -36,6 +32,11 @@ namespace SoruBankasi.Models
                 .HasMany(e => e.Kullanici)
                 .WithMany(e => e.Ders)
                 .Map(m => m.ToTable("KullaniciDers").MapLeftKey("DersID").MapRightKey("KullaniciID"));
+
+            modelBuilder.Entity<Konu>()
+                .HasMany(e => e.SoruDonemi)
+                .WithMany(e => e.Konu)
+                .Map(m => m.ToTable("KonuSoruDonemi").MapLeftKey("KonuID").MapRightKey("SoruDonemID"));
 
             modelBuilder.Entity<Sinav>()
                 .HasMany(e => e.SinavSorulari)
@@ -57,11 +58,6 @@ namespace SoruBankasi.Models
                 .WithRequired(e => e.SoruDonemi)
                 .HasForeignKey(e => e.SoruDonemID)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<SoruDonemi>()
-                .HasMany(e => e.Konu)
-                .WithMany(e => e.SoruDonemi)
-                .Map(m => m.ToTable("KonuSoruDonemi").MapLeftKey("SoruDonemID").MapRightKey("KonuID"));
 
             modelBuilder.Entity<SoruTipi>()
                 .HasMany(e => e.Soru)

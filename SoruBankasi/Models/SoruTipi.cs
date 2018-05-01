@@ -7,7 +7,7 @@ namespace SoruBankasi.Models
     [Table("SoruTipi")]
     public partial class SoruTipi
     {
-                public SoruTipi()
+        public SoruTipi()
         {
             Soru = new HashSet<Soru>();
         }
@@ -17,7 +17,7 @@ namespace SoruBankasi.Models
         [StringLength(15)]
         public string SoruTipAdi { get; set; }
 
-       
+
         public virtual ICollection<Soru> Soru { get; set; }
     }
 }
