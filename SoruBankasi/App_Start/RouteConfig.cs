@@ -25,7 +25,7 @@ namespace SoruBankasi
             routes.MapRoute(name: "Lessons", url: "Dersler", defaults: new { controller = "Lesson", action = "Index" });
             routes.MapRoute(name: "AddLesson", url: "DersEkle", defaults: new { controller = "Lesson", action = "Add" });
             routes.MapRoute(name: "EditLesson", url: "DersDuzenle/{ID}", defaults: new { controller = "Lesson", action = "Edit" });
-            routes.MapRoute(name: "DeleteLesson", url: "DersSil/{ID}", defaults: new { controller = "Lesson", action = "Delete" });
+            routes.MapRoute(name: "DeleteLesson", url: "DersSil", defaults: new { controller = "Lesson", action = "Delete" });
             #endregion
 
         }
