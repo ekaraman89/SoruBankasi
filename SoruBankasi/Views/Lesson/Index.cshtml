@@ -73,14 +73,13 @@
             if (confirm("Ders Silinsin mi ?")) {
                 $.ajax({
                     type: "POST",
-                    url: "DersSil/"+id,
-                   // data: { ID: id },
+                    url: "DersSil",
+                    data: { ID: id },
                     success: function (data) {
                         var result = JSON.parse(data);
                         if (result.durum == "OK") {
                             $("#tr_" + id).remove();
                             $("#message").append("<div class='alert alert-info'><strong></strong>" + result.mesaj + " </div>")
-
                         }
                         else if (result.durum = "NO") {
                             $("#message").append("<div class='alert alert-info'><strong></strong>" + result.mesaj + " </div>")
