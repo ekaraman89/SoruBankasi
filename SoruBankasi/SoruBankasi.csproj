@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="Helpers\FileUpload.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
+    <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Models\Cevaplar.cs" />
     <Compile Include="Models\Ders.cs" />
     <Compile Include="Models\Konu.cs" />

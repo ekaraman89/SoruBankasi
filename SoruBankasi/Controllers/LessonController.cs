@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SoruBankasi.Infrastructure;
 using SoruBankasi.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 namespace SoruBankasi.Controllers
 {
     [Authorize(Roles = "admin")]
+    [SelectedTab("Lesson")]
     public class LessonController : Controller
     {
         public ActionResult Index()

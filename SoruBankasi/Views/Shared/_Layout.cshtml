@@ -32,6 +32,14 @@
     <link href="/Content/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
     @*<link rel="shortcut icon" href="favicon.ico" />*@
+
+    @helper SelectedTabClass(string tabName)
+        {
+            if (tabName.Equals(ViewBag.SelectedTab))
+            {
+                @:active open
+            }
+}
 </head>
 <!-- END HEAD -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
@@ -130,7 +138,7 @@
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                         <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 
-                        <li class="nav-item start active open">
+                        <li class="nav-item start  @SelectedTabClass("Home")">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-home"></i>
                                 <span class="title">Menu</span>
@@ -138,7 +146,7 @@
                                 <span class="arrow open"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="nav-item start active open">
+                                <li class="nav-item start @SelectedTabClass("Home")">
                                     <a href="index.html" class="nav-link ">
                                         <i class="icon-bar-chart"></i>
                                         <span class="title">Konu Yönetimi</span>
@@ -166,19 +174,19 @@
                             <li class="heading">
                                 <h3 class="uppercase">Admin</h3>
                             </li>
-                            <li class="nav-item  ">
+                            <li class="nav-item  @SelectedTabClass("Lesson") @SelectedTabClass("Users")">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-diamond"></i>
                                     <span class="title">Yönetim</span>
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li class="nav-item  ">
+                                    <li class="nav-item  @SelectedTabClass("Users")">
                                         <a href="ui_metronic_grid.html" class="nav-link ">
                                             <span class="title">Kullanicilar</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item  @SelectedTabClass("Lesson")">
                                         <a href="@Url.RouteUrl("Lessons")" class="nav-link ">
                                             <span class="title">Dersler</span>
                                         </a>
