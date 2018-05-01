@@ -65,8 +65,9 @@
 
                             using (SoruBankasi.Models.SoruBankasiDbContext db = new SoruBankasi.Models.SoruBankasiDbContext())
                             {
-                                //SoruBankasi.Models.Kullanici _kullanici = new SoruBankasi.Models.Kullanici();
-                                SoruBankasi.Models.Kullanici _kullanici = db.Kullanici.SingleOrDefault(x => x.KullaniciAdi.Equals(User.Identity.Name));
+                                SoruBankasi.Models.Kullanici _kullanici = new SoruBankasi.Models.Kullanici();
+                                /* SoruBankasi.Models.Kullanici*/
+                                _kullanici = db.Kullanici.SingleOrDefault(x => x.KullaniciAdi.Equals(User.Identity.Name));
 
                                 <li class="dropdown dropdown-user">
                                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -178,7 +179,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
-                                        <a href="ui_colors.html" class="nav-link ">
+                                        <a href="@Url.RouteUrl("Lessons")" class="nav-link ">
                                             <span class="title">Dersler</span>
                                         </a>
                                     </li>
