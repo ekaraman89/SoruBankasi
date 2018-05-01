@@ -1,5 +1,6 @@
 ﻿using SoruBankasi.Helpers;
 using SoruBankasi.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -67,8 +68,10 @@ namespace SoruBankasi.Controllers
             {
                 using (SoruBankasiDbContext db = new SoruBankasiDbContext())
                 {
-                    Kullanici kullanici = db.Kullanici.SingleOrDefault(x => x.KullaniciAdi.Equals(User.Identity.Name));
-                    if (db.Kullanici.SingleOrDefault(x => !x.Mail.Equals(model.Mail) && x.KullaniciAdi != kullanici.KullaniciAdi) != null)
+                    List<Kullanici> lst = db.Kullanici.ToList();
+
+                    Kullanici kullanici = lst.SingleOrDefault(x => x.KullaniciAdi.Equals(User.Identity.Name));
+                    if (lst.SingleOrDefault(x => x.Mail.Equals(model.Mail) && x.ID != kullanici.ID) == null)
                     {
                         kullanici.Mail = model.Mail;
                         db.Entry(kullanici).State = System.Data.Entity.EntityState.Modified;
