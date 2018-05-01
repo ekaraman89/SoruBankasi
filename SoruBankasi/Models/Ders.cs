@@ -5,7 +5,7 @@ namespace SoruBankasi.Models
 
     public partial class Ders
     {
-       
+
         public Ders()
         {
             Konu = new HashSet<Konu>();
@@ -14,7 +14,9 @@ namespace SoruBankasi.Models
 
         public int ID { get; set; }
 
-        [StringLength(10)]
+
+        [Required]
+        [StringLength(50)]
         public string DersAdi { get; set; }
 
 
