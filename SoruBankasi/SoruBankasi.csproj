@@ -232,6 +232,7 @@
     <Content Include="Views\Account\ProfileDetail.cshtml" />
     <Content Include="Views\Lesson\Add.cshtml" />
     <Content Include="Views\Lesson\Index.cshtml" />
+    <Content Include="Views\Lesson\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
