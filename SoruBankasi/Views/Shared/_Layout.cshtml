@@ -8,7 +8,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>Soru Bankası YÖnetim Ekranı | Admin Dashboard</title>
+    <title>Soru Bankası Yönetim Ekranı | Admin Dashboard</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Emrah KARAMAN, ekaraman89@hotmail.com" name="author" />
@@ -65,6 +65,7 @@
 
                             using (SoruBankasi.Models.SoruBankasiDbContext db = new SoruBankasi.Models.SoruBankasiDbContext())
                             {
+                                //SoruBankasi.Models.Kullanici _kullanici = new SoruBankasi.Models.Kullanici();
                                 SoruBankasi.Models.Kullanici _kullanici = db.Kullanici.SingleOrDefault(x => x.KullaniciAdi.Equals(User.Identity.Name));
 
                                 <li class="dropdown dropdown-user">
