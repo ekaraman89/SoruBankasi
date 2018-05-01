@@ -36,6 +36,7 @@ namespace SoruBankasi.Controllers
                         db.Entry(model).State = System.Data.Entity.EntityState.Added;
                         db.SaveChanges();
                         ViewBag.Message = $"<div class='alert alert-success'><strong>Başarılı!</strong> Ders Başarıyla Eklendi... </div>";
+                        ModelState.Clear();
                     }
                     else
                     {
@@ -48,12 +49,37 @@ namespace SoruBankasi.Controllers
 
         public ActionResult Edit(int ID)
         {
-            return View();
+            using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+            {
+                Ders ders = db.Ders.SingleOrDefault(x => x.ID.Equals(ID));
+                if (ders != null)
+                {
+                    return View(ders);
+                }
+            }
+            return RedirectToRoute("Lessons");
         }
         [HttpPost]
         public ActionResult Edit(Ders model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+                {
+                    if (db.Ders.SingleOrDefault(x => x.DersAdi.Equals(model.DersAdi) && x.ID != model.ID) == null)
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        ViewBag.Message = $"<div class='alert alert-success'><strong>Başarılı!</strong> Ders Başarıyla Güncellendi... </div>";
+                        ModelState.Clear();
+                    }
+                    else
+                    {
+                        ViewBag.Message = $"<div class='alert alert-danger'><strong>Hata!</strong> Bu ders adı zaten kullanılıyor... </div>";
+                    }
+                }
+            }
+            return View(model);
         }
 
         [HttpPost]
