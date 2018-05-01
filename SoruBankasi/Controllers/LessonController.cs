@@ -1,4 +1,5 @@
-﻿using SoruBankasi.Models;
+﻿using Newtonsoft.Json;
+using SoruBankasi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,15 @@ using System.Web.Mvc;
 
 namespace SoruBankasi.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles = "admin")]
     public class LessonController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+            {
+                return View(db.Ders.ToList());
+            }
         }
 
         public ActionResult Add()
@@ -52,10 +56,25 @@ namespace SoruBankasi.Controllers
             return View();
         }
 
+        [HttpPost]
         public string Delete(int ID)
         {
-
-            return "";
+            string message = string.Empty;
+            using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+            {
+                Ders ders = db.Ders.SingleOrDefault(x => x.ID.Equals(ID));
+                if (ders != null)
+                {
+                    db.Ders.Remove(ders);
+                    db.SaveChanges();
+                    message = JsonConvert.SerializeObject(new { durum = "OK", mesaj = "Ders Silindi" });
+                }
+                else
+                {
+                    message = JsonConvert.SerializeObject(new { durum = "No", mesaj = "Ders Silinemedi" });
+                }
+            }
+            return message;
         }
     }
 }
