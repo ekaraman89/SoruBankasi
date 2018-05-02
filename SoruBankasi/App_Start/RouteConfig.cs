@@ -28,6 +28,13 @@ namespace SoruBankasi
             routes.MapRoute(name: "DeleteLesson", url: "DersSil", defaults: new { controller = "Lesson", action = "Delete" });
             #endregion
 
+            #region Users
+            routes.MapRoute(name: "Users", url: "Kullanicilar", defaults: new { controller = "Users", action = "Index" });
+            routes.MapRoute(name: "AddUser", url: "KullaniciEkle", defaults: new { controller = "Users", action = "Add" });
+            routes.MapRoute(name: "EditUser", url: "KullaniciDuzenle/{ID}", defaults: new { controller = "Users", action = "Edit" });
+            routes.MapRoute(name: "DeleteUser", url: "KullaniciSil", defaults: new { controller = "Users", action = "Delete" });
+            #endregion
+
         }
     }
 }
