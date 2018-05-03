@@ -21,16 +21,21 @@ namespace SoruBankasi.Controllers
 
         public ActionResult Add()
         {
+            using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+            {
+                ViewBag.Lessons = db.Ders.ToList();
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(Kullanici model)
+        public ActionResult Add(Kullanici model, int[] lessons)
         {
             if (ModelState.IsValid)
             {
                 using (SoruBankasiDbContext db = new SoruBankasiDbContext())
                 {
+                    ViewBag.Lessons = db.Ders.ToList();
                     List<Kullanici> lst = db.Kullanici.ToList();
 
                     if (lst.SingleOrDefault(x => x.Mail.Equals(model.Mail)) == null)
@@ -38,6 +43,11 @@ namespace SoruBankasi.Controllers
                         if (lst.SingleOrDefault(x => x.KullaniciAdi.Equals(model.KullaniciAdi)) == null)
                         {
                             db.Entry(model).State = System.Data.Entity.EntityState.Added;
+                            foreach (int item in lessons)
+                            {
+                                KullaniciDers kulDers = new KullaniciDers { DersID = item, KullaniciID = model.ID };
+                                db.Entry(kulDers).State = System.Data.Entity.EntityState.Added;
+                            }
                             db.SaveChanges();
                             ViewBag.Message = $"<div class='alert alert-success'><strong>Başarılı!</strong> Kullanıcı Başarıyla Eklendi... </div>";
                             ModelState.Clear();
