@@ -62,7 +62,7 @@
 
                                 </td>
                                 <td>
-                                    @Html.RouteLink("Düzenle", "EditTopic", new { id = item.ID }) |
+                                    @*@Html.RouteLink("Düzenle", "EditTopic", new { id = item.ID }) |*@
                                     <a href="#" onclick="DeleteTopic(@item.ID)">Sil</a>
                                 </td>
                             </tr>
@@ -88,7 +88,7 @@
 
     <script>
 
-        function DeleteLesson(id) {
+        function DeleteTopic(id) {
             if (confirm("Konu Silinsin mi ?")) {
                 $.ajax({
                     type: "POST",
