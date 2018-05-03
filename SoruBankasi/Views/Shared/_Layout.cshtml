@@ -138,7 +138,7 @@
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                         <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 
-                        <li class="nav-item start  @SelectedTabClass("Home")">
+                        <li class="nav-item start  @SelectedTabClass("Home") @SelectedTabClass("Topic")">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-home"></i>
                                 <span class="title">Menu</span>
@@ -146,8 +146,8 @@
                                 <span class="arrow open"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="nav-item start @SelectedTabClass("Home")">
-                                    <a href="index.html" class="nav-link ">
+                                <li class="nav-item start @SelectedTabClass("Topic")">
+                                    <a href="@Url.RouteUrl("Topics")" class="nav-link ">
                                         <i class="icon-bar-chart"></i>
                                         <span class="title">Konu Yönetimi</span>
                                         <span class="selected"></span>
