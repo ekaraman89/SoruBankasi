@@ -1,9 +1,22 @@
-﻿@{
-    ViewBag.Page = "Konular";
-    ViewBag.Title = "Konu Yönetimi";
-    ViewBag.Description= "Konu yönetim ekranı";
+﻿@model  IEnumerable<SoruBankasi.Models.KullaniciDers>
+
+@{
+    ViewBag.Title = "Index";
 }
 
-
 <h2>Index</h2>
-@User.Identity.Name
+
+<div>
+    <h4>Kullanici</h4>
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <p>
+            @item.Ders.DersAdi
+        </p><br />
+    }
+
+
+
+</div>
