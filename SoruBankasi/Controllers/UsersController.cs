@@ -60,6 +60,7 @@ namespace SoruBankasi.Controllers
                     {
                         ViewBag.Message = $"<div class='alert alert-danger'><strong>Hata!</strong> Bu mail zaten kullanılıyor... </div>";
                     }
+                    ViewBag.Lessons = db.Ders.ToList();
                 }
             }
             else
