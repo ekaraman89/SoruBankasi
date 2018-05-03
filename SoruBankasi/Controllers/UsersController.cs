@@ -35,7 +35,6 @@ namespace SoruBankasi.Controllers
             {
                 using (SoruBankasiDbContext db = new SoruBankasiDbContext())
                 {
-                    ViewBag.Lessons = db.Ders.ToList();
                     List<Kullanici> lst = db.Kullanici.ToList();
 
                     if (lst.SingleOrDefault(x => x.Mail.Equals(model.Mail)) == null)
@@ -61,6 +60,13 @@ namespace SoruBankasi.Controllers
                     {
                         ViewBag.Message = $"<div class='alert alert-danger'><strong>Hata!</strong> Bu mail zaten kullanılıyor... </div>";
                     }
+                }
+            }
+            else
+            {
+                using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+                {
+                    ViewBag.Lessons = db.Ders.ToList();
                 }
             }
             return View(model);
