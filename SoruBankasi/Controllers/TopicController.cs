@@ -1,4 +1,5 @@
-﻿using SoruBankasi.Infrastructure;
+﻿using Newtonsoft.Json;
+using SoruBankasi.Infrastructure;
 using SoruBankasi.Models;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,30 @@ namespace SoruBankasi.Controllers
             GetUserLessons();
 
             return View(model);
+        }
+
+        [HttpPost]
+        public string Delete(int ID)
+        {
+            string message = string.Empty;
+            using (SoruBankasiDbContext db = new SoruBankasiDbContext())
+            {
+                List<KonuSoruDonemi> lst = db.KonuSoruDonemi.Where(x => x.KonuID.Equals(ID)).ToList();
+                db.KonuSoruDonemi.RemoveRange(lst);
+
+                Konu konu = db.Konu.SingleOrDefault(x => x.ID.Equals(ID));
+                if (konu != null)
+                {
+                    db.Konu.Remove(konu);
+                    db.SaveChanges();
+                    message = JsonConvert.SerializeObject(new { durum = "OK", mesaj = "Konu Silindi" });
+                }
+                else
+                {
+                    message = JsonConvert.SerializeObject(new { durum = "No", mesaj = "Konu Silinemedi" });
+                }
+            }
+            return message;
         }
     }
 }
