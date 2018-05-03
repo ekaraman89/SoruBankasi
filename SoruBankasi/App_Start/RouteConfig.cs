@@ -35,6 +35,13 @@ namespace SoruBankasi
             routes.MapRoute(name: "DeleteUser", url: "KullaniciSil", defaults: new { controller = "Users", action = "Delete" });
             #endregion
 
+            #region Topic
+            routes.MapRoute(name: "Topics", url: "Konular", defaults: new { controller = "Topic", action = "Index" });
+            routes.MapRoute(name: "AddTopic", url: "KonuEkle", defaults: new { controller = "Topic", action = "Add" });
+            //routes.MapRoute(name: "EditTopic", url: "KonuDuzenle/{ID}", defaults: new { controller = "Topic", action = "Edit" });
+            routes.MapRoute(name: "DeleteTopic", url: "KonuSil", defaults: new { controller = "Topic", action = "Delete" });
+            #endregion
+
         }
     }
 }
