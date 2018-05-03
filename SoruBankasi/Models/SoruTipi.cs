@@ -17,7 +17,6 @@ namespace SoruBankasi.Models
         [StringLength(15)]
         public string SoruTipAdi { get; set; }
 
-
         public virtual ICollection<Soru> Soru { get; set; }
     }
 }

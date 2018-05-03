@@ -10,7 +10,7 @@ namespace SoruBankasi.Models
         
         public Konu()
         {
-            SoruDonemi = new HashSet<SoruDonemi>();
+            KonuSoruDonemi = new HashSet<KonuSoruDonemi>();
         }
 
         public int ID { get; set; }
@@ -23,7 +23,8 @@ namespace SoruBankasi.Models
 
         public virtual Ders Ders { get; set; }
 
-       
-        public virtual ICollection<SoruDonemi> SoruDonemi { get; set; }
+
+        public virtual ICollection<KonuSoruDonemi> KonuSoruDonemi { get; set; }
+
     }
 }

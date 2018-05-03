@@ -2,6 +2,7 @@ namespace SoruBankasi.Models
 {
     using System.Data.Entity;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class SoruBankasiDbContext : DbContext
     {
@@ -14,7 +15,9 @@ namespace SoruBankasi.Models
         public virtual DbSet<Cevaplar> Cevaplar { get; set; }
         public virtual DbSet<Ders> Ders { get; set; }
         public virtual DbSet<Konu> Konu { get; set; }
+        public virtual DbSet<KonuSoruDonemi> KonuSoruDonemi { get; set; }
         public virtual DbSet<Kullanici> Kullanici { get; set; }
+        public virtual DbSet<KullaniciDers> KullaniciDers { get; set; }
         public virtual DbSet<Sinav> Sinav { get; set; }
         public virtual DbSet<SinavSorulari> SinavSorulari { get; set; }
         public virtual DbSet<Soru> Soru { get; set; }
@@ -27,16 +30,6 @@ namespace SoruBankasi.Models
                 .HasMany(e => e.Konu)
                 .WithRequired(e => e.Ders)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Ders>()
-                .HasMany(e => e.Kullanici)
-                .WithMany(e => e.Ders)
-                .Map(m => m.ToTable("KullaniciDers").MapLeftKey("DersID").MapRightKey("KullaniciID"));
-
-            modelBuilder.Entity<Konu>()
-                .HasMany(e => e.SoruDonemi)
-                .WithMany(e => e.Konu)
-                .Map(m => m.ToTable("KonuSoruDonemi").MapLeftKey("KonuID").MapRightKey("SoruDonemID"));
 
             modelBuilder.Entity<Sinav>()
                 .HasMany(e => e.SinavSorulari)
@@ -54,6 +47,11 @@ namespace SoruBankasi.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SoruDonemi>()
+                .HasMany(e => e.KonuSoruDonemi)
+                .WithRequired(e => e.SoruDonemi)
+                .HasForeignKey(e => e.SoruDonemID);
+
+            modelBuilder.Entity<SoruDonemi>()
                 .HasMany(e => e.Soru)
                 .WithRequired(e => e.SoruDonemi)
                 .HasForeignKey(e => e.SoruDonemID)
@@ -64,7 +62,6 @@ namespace SoruBankasi.Models
                 .WithRequired(e => e.SoruTipi)
                 .HasForeignKey(e => e.SoruTipID)
                 .WillCascadeOnDelete(false);
-
         }
 
 
@@ -78,8 +75,8 @@ namespace SoruBankasi.Models
                     KullaniciAdi = "emrah",
                     Mail = "emrah@mail.com",
                     Sifre = "123",
-                    Adi="emrah",
-                    Soyadi="karaman",
+                    Adi = "emrah",
+                    Soyadi = "karaman",
                     YoneticiMi = true
                 });
 

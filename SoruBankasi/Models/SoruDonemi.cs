@@ -7,11 +7,11 @@ namespace SoruBankasi.Models
     [Table("SoruDonemi")]
     public partial class SoruDonemi
     {
-       
+
         public SoruDonemi()
         {
+            KonuSoruDonemi = new HashSet<KonuSoruDonemi>();
             Soru = new HashSet<Soru>();
-            Konu = new HashSet<Konu>();
         }
 
         public int ID { get; set; }
@@ -20,10 +20,9 @@ namespace SoruBankasi.Models
         [StringLength(9)]
         public string SoruDonemAdi { get; set; }
 
-       
+        public virtual ICollection<KonuSoruDonemi> KonuSoruDonemi { get; set; }
+
         public virtual ICollection<Soru> Soru { get; set; }
 
-       
-        public virtual ICollection<Konu> Konu { get; set; }
     }
 }

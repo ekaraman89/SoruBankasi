@@ -10,7 +10,7 @@ namespace SoruBankasi.Models
 
         public Kullanici()
         {
-            Ders = new HashSet<Ders>();
+            KullaniciDers = new HashSet<KullaniciDers>();
         }
 
         public int ID { get; set; }
@@ -52,8 +52,7 @@ namespace SoruBankasi.Models
 
         public bool YoneticiMi { get; set; }
 
-        public virtual ICollection<Ders> Ders { get; set; }
-
+        public virtual ICollection<KullaniciDers> KullaniciDers { get; set; }
 
         [NotMapped]
         public string YeniSifre { get; set; }

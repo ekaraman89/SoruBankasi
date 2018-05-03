@@ -181,6 +181,7 @@
     <Content Include="Content\assets\layouts\layout\scripts\layout.min.js" />
     <Content Include="Content\assets\pages\css\login.min.css" />
     <Content Include="Content\assets\pages\css\profile.min.css" />
+    <Content Include="Content\assets\pages\scripts\components-select2.min.js" />
     <Content Include="Content\assets\pages\scripts\profile.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -197,7 +198,6 @@
     <Content Include="Uploads\Profile\emrah.jpg" />
     <Content Include="Uploads\Profile\no_image.png" />
     <Content Include="Web.config" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -214,7 +214,9 @@
     <Compile Include="Models\Cevaplar.cs" />
     <Compile Include="Models\Ders.cs" />
     <Compile Include="Models\Konu.cs" />
+    <Compile Include="Models\KonuSoruDonemi.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\KullaniciDers.cs" />
     <Compile Include="Models\Sinav.cs" />
     <Compile Include="Models\SinavSorulari.cs" />
     <Compile Include="Models\Soru.cs" />
@@ -238,6 +240,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Add.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
