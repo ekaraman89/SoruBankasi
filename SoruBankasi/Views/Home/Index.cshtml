@@ -1,22 +1,12 @@
 ﻿@model  IEnumerable<SoruBankasi.Models.KullaniciDers>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
 <div>
-    <h4>Kullanici</h4>
+    <h4>Size Atanan Dersler</h4>
     <hr />
 
     @foreach (var item in Model)
     {
         <p>
             @item.Ders.DersAdi
-        </p><br />
+        </p>
     }
-
-
-
 </div>
