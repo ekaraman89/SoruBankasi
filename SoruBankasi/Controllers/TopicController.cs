@@ -15,7 +15,15 @@ namespace SoruBankasi.Controllers
         public ActionResult Index()
         {
             SoruBankasiDbContext db = new SoruBankasiDbContext();
-            return View(db.Konu.ToList());
+
+            List<Konu> lst = db.Konu.ToList();
+            if (!User.IsInRole("Admin"))
+            {
+                int userID = db.Kullanici.Single(x => x.KullaniciAdi.Equals(User.Identity.Name)).ID;
+                int[] userLessons = db.KullaniciDers.Where(x => x.KullaniciID.Equals(userID)).Select(x => x.DersID).ToArray();
+                lst = lst.Where(x => userLessons.Contains(x.DersID)).ToList();
+            }
+            return View(lst);
         }
 
         public ActionResult Add()
