@@ -54,12 +54,10 @@
                                     @item.Ders.DersAdi
                                 </td>
                                 <td>
-
                                     @foreach (var s in item.KonuSoruDonemi)
-    {
-                                <span class="label label-sm label-success">  @s.SoruDonemi.SoruDonemAdi  </span> @Html.Label(" ")
-}
-
+                                    {
+                                        <span class="label label-sm label-success">  @s.SoruDonemi.SoruDonemAdi  </span> @Html.Label(" ")
+                                    }
                                 </td>
                                 <td>
                                     @*@Html.RouteLink("Düzenle", "EditTopic", new { id = item.ID }) |*@
