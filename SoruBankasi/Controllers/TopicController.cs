@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace SoruBankasi.Controllers
 {
     [SelectedTab("Topic")]
-    public class TopicController : Controller
+    public class TopicController : BaseController
     {
         public ActionResult Index()
         {
