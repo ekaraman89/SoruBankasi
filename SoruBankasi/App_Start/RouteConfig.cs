@@ -49,6 +49,7 @@ namespace SoruBankasi
             routes.MapRoute(name: "DeleteQuestion", url: "SoruSil", defaults: new { controller = "Question", action = "Delete" });
 
             routes.MapRoute(name: "GetLessonsTopic", url: "DersinKonulari", defaults: new { controller = "Question", action = "GetLessonsTopic" });
+            routes.MapRoute(name: "AddQuestionWithAjax", url: "SoruEkle2", defaults: new { controller = "Question", action = "AddQuestion" });
 
             #endregion
 
