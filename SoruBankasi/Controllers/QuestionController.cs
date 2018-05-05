@@ -68,8 +68,31 @@ namespace SoruBankasi.Controllers
         [HttpPost]
         public string AddQuestion(SoruEkleViewModel model)
         {
-            //to do
-            return "";
+            Soru soru = new Soru
+            {
+                Sorular = model.Soru,
+                SoruTipID = model.SoruTipiID,
+                SoruDonemID = model.DonemID,
+                KonuID = model.KonuID
+            };
+            SoruBankasiDbContext db = new SoruBankasiDbContext();
+            db.Soru.Add(soru);
+            db.SaveChanges();
+            List<Cevaplar> lst = new List<Cevaplar>();
+            foreach (var item in model.Cevaplar)
+            {
+                Cevaplar cevap = new Cevaplar
+                {
+                    SoruID = soru.ID,
+                    Cevap = item.CevapIcerik,
+                    DogruMu = item.Val
+                };
+                lst.Add(cevap);
+            }
+            db.Cevaplar.AddRange(lst);
+            db.SaveChanges();
+
+            return JsonConvert.SerializeObject(new { durum = "OK", mesaj = "Soru başarıyla eklendi" });
         }
     }
 }
