@@ -202,6 +202,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Models\SoruBankasiDbContext.cs" />
     <Compile Include="Models\SoruDonemi.cs" />
     <Compile Include="Models\SoruTipi.cs" />
+    <Compile Include="Models\ViewModel\SoruEkleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +247,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Topic\Index.cshtml" />
     <Content Include="Views\Topic\Add.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Question\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -254,7 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Question\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
