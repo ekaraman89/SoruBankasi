@@ -18,7 +18,7 @@
     </div>
 </div>
 <br />
-@Html.Raw(@ViewBag.Message)
+<div id="message"></div>
 
 <div class="portlet-body form">
     <div class="form-horizontal">
@@ -127,7 +127,7 @@
                                     text: item.KonuAdi
                                 }));
                             });
-                            $('#Donem').empty().append('<option selected="selected" value="0">Konu Seçin</option>');
+                            $('#Donem').empty().append('<option selected="selected" value="0">Dönem Seçin</option>');
                         }
                     });
                 }
@@ -136,7 +136,7 @@
             $('#Konu').on('change', function () {
                 var i = $(this).prop('selectedIndex') - 1;
                 result[i].KonuSoruDonemi
-                $('#Donem').empty().append('<option selected="selected" value="0">Konu Seçin</option>');
+                $('#Donem').empty().append('<option selected="selected" value="0">Dönem Seçin</option>');
                 $.each(result[i].KonuSoruDonemi, function (i, item) {
                     $('#Donem').append($('<option>', {
                         value: item.SoruDonemi.ID,
@@ -145,39 +145,21 @@
                 });
             });
 
-
             $('#CevapEkle').click(function () {
                 $(this).prev().after("<div class='col-md-offset-2 col-md-10'><div class='input-group'><span class='input-group-addon'><input type='radio' name='cevap'><span></span></span><input type='text' class='form-control txtcevap'></div></div>");
             });
 
-
-
             $('.gonder').click(function () {
 
-                var lst=[];
+                var lst = [];
                 $.each($('.txtcevap'), function () {
                     var obj = {
                         Val: $($($(this).prev()[0]).children()[0]).prop('checked'),
                         CevapIcerik: $(this).val()
                     };
                     lst.push(obj);
-                   // lst += "'val':'"+ $($($(this).prev()[0]).children()[0]).prop('checked') + "','txt':'" + $(this).val()+"'";
-                    //console.log($($($(this).prev()[0]).children()[0]).prop('checked') + " - " + $(this).val());
-                    //'{ "name":"John", "age":30, "city":"New York"}'
                 });
 
-                //var myData = [];
-                //rows.each(function (index) {
-                //    var obj = {
-                //        id: $this.find('.elementOne').val(),
-                //        name: $this.find('.elementTwo').text()
-                //    };
-                //    myData.push(obj);
-                //});
-
-
-
-                //console.log(JSON.parse(lst));
                 var data = {
                     KonuID: $('#Konu').val(),
                     DonemID: $('#Donem').val(),
@@ -186,20 +168,21 @@
                     Cevaplar: lst
                 };
 
-
                 $.ajax({
                     type: "POST",
                     url: "SoruEkle2",
-                    //data: SoruEkleViewModel,
                     data: JSON.stringify(data),
                     contentType: "application/json; charset=utf-8",
-                    dataType: "json"
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.durum == "OK") {
+                            $("#message").append("<div class='alert alert-info'><strong></strong>" + data.mesaj + " </div>")
+                        }
+                        else if (data.durum = "NO") {
+                            $("#message").append("<div class='alert alert-info'><strong></strong>" + data.mesaj + " </div>")
+                        }
+                    }
                 });
-
-
-
-
-
             });
         });
 
