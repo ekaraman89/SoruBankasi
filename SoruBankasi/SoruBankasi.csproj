@@ -111,8 +111,33 @@
     <Content Include="Content\assets\global\plugins\bootstrap-toastr\toastr.min.js" />
     <Content Include="Content\assets\global\plugins\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\assets\global\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\assets\global\plugins\datatables\datatables.min.css" />
+    <Content Include="Content\assets\global\plugins\datatables\datatables.min.js" />
+    <Content Include="Content\assets\global\plugins\datatables\images\back_disabled.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\back_enabled.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\back_enabled_hover.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\forward_disabled.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\forward_enabled.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\forward_enabled_hover.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\sort_asc.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\sort_both.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\sort_desc.png" />
+    <Content Include="Content\assets\global\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Content\assets\global\plugins\datatables\plugins\bootstrap\datatables.bootstrap.css" />
+    <Content Include="Content\assets\global\plugins\datatables\plugins\bootstrap\datatables.bootstrap.js" />
     <Content Include="Content\assets\global\plugins\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.dependencyLib.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.extensions.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.loader.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.phone.extensions.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\inputmask.regex.extensions.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Content\assets\global\plugins\jquery-inputmask\jquery.inputmask.bundle.min.js" />
     <Content Include="Content\assets\global\plugins\jquery-slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Content\assets\global\plugins\jquery.blockui.min.js" />
     <Content Include="Content\assets\global\plugins\jquery.min.js" />
@@ -183,6 +208,8 @@
     <Content Include="Content\assets\pages\css\profile.min.css" />
     <Content Include="Content\assets\pages\scripts\components-select2.min.js" />
     <Content Include="Content\assets\pages\scripts\profile.min.js" />
+    <Content Include="Content\assets\pages\scripts\form-input-mask.js" />
+    <Content Include="Content\assets\pages\scripts\table-datatables-buttons.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -193,6 +220,7 @@
     <Content Include="Content\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
     <Content Include="Content\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.woff" />
     <Content Include="Content\assets\global\plugins\bootstrap-toastr\toastr.min.js.map" />
+    <Content Include="Content\assets\global\plugins\datatables\images\Sorting icons.psd" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Uploads\no_image.png" />
     <Content Include="Uploads\Profile\emrah.jpg" />
@@ -203,6 +231,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -226,6 +255,7 @@
     <Compile Include="Models\SoruBankasiDbContext.cs" />
     <Compile Include="Models\SoruDonemi.cs" />
     <Compile Include="Models\SoruTipi.cs" />
+    <Compile Include="Models\ViewModel\SinavHazirlamaViewModel.cs" />
     <Compile Include="Models\ViewModel\SoruEkleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -249,6 +279,8 @@
     <Content Include="Views\Topic\Add.cshtml" />
     <Content Include="Views\Question\Index.cshtml" />
     <Content Include="Views\Question\Add.cshtml" />
+    <Content Include="Views\Exam\Prepare.cshtml" />
+    <Content Include="Views\Exam\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
