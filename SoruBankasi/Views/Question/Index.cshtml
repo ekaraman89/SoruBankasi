@@ -37,6 +37,7 @@
                             <th>
                                 Soru
                             </th>
+                            <th>Ders - Konu</th>
                             <th>
                                 Soru Tipi
                             </th>
@@ -53,10 +54,12 @@
                             <tr id="tr_@item.ID">
                                 <td>
                                     <span>@i</span>
-                                    
                                 </td>
                                 <td>
                                     @item.Sorular
+                                </td>
+                                <td>
+                                    <p> <label class="badge">@item.Konu.Ders.DersAdi</label>  -  @item.Konu.KonuAdi</p>
                                 </td>
                                 <td>
                                     @item.SoruTipi.SoruTipAdi
