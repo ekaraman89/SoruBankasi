@@ -7,7 +7,7 @@ namespace SoruBankasi.Models
     [Table("Soru")]
     public partial class Soru
     {
-       
+
         public Soru()
         {
             Cevaplar = new HashSet<Cevaplar>();
@@ -23,6 +23,8 @@ namespace SoruBankasi.Models
 
         public int SoruDonemID { get; set; }
 
+        public int KonuID { get; set; }
+
         [StringLength(50)]
         public string Foto { get; set; }
 
@@ -33,5 +35,7 @@ namespace SoruBankasi.Models
         public virtual SoruDonemi SoruDonemi { get; set; }
 
         public virtual SoruTipi SoruTipi { get; set; }
+
+        public virtual Konu Konu { get; set; }
     }
 }

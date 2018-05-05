@@ -7,10 +7,11 @@ namespace SoruBankasi.Models
     [Table("Konu")]
     public partial class Konu
     {
-        
+
         public Konu()
         {
             KonuSoruDonemi = new HashSet<KonuSoruDonemi>();
+            Soru = new HashSet<Soru>();
         }
 
         public int ID { get; set; }
@@ -25,6 +26,7 @@ namespace SoruBankasi.Models
 
 
         public virtual ICollection<KonuSoruDonemi> KonuSoruDonemi { get; set; }
+        public virtual ICollection<Soru> Soru { get; set; }
 
     }
 }
