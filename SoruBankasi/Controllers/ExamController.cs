@@ -1,6 +1,7 @@
 ﻿using SoruBankasi.Infrastructure;
 using SoruBankasi.Models;
 using SoruBankasi.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -29,17 +30,14 @@ namespace SoruBankasi.Controllers
         [HttpPost]
         public ActionResult Prepare(SinavHazirlamaViewModel model)
         {
-
-
             SoruBankasiDbContext db = new SoruBankasiDbContext();
 
             List<Soru> sorular = db.Soru.ToList().Where(x => x.SoruDonemID.Equals(model.Donem) && x.Konu.Ders.ID.Equals(model.Ders)).ToList();
             List<Soru> lst = new List<Soru>();
 
-            lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Klasik")).Take(model.KlasikSoruAdet));
-            lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Test")).Take(model.TestSoruAdet));
-            lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Bosluk Doldurma")).Take(model.BoslukSoruAdet));
-
+            lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Klasik")).OrderBy(x => Guid.NewGuid()).Take(model.KlasikSoruAdet));
+            lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Test")).OrderBy(x => Guid.NewGuid()).Take(model.TestSoruAdet));
+            lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Bosluk Doldurma")).OrderBy(x => Guid.NewGuid()).Take(model.BoslukSoruAdet));
 
             TempData["list"] = lst;
             return RedirectToAction("Show");
