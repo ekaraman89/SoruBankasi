@@ -8,5 +8,9 @@
         public int BoslukSoruAdet { get; set; }
         public int TestSoruAdet { get; set; }
 
+        public int KlasikSoruPuan { get; set; }
+        public int BoslukSoruPuan { get; set; }
+        public int TestSoruPuan { get; set; }
+
     }
 }

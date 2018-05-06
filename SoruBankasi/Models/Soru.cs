@@ -37,5 +37,8 @@ namespace SoruBankasi.Models
         public virtual SoruTipi SoruTipi { get; set; }
 
         public virtual Konu Konu { get; set; }
+
+        [NotMapped]
+        public int Puan { get; set; }
     }
 }

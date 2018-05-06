@@ -32,7 +32,27 @@ namespace SoruBankasi.Controllers
         {
             SoruBankasiDbContext db = new SoruBankasiDbContext();
 
-            List<Soru> sorular = db.Soru.ToList().Where(x => x.SoruDonemID.Equals(model.Donem) && x.Konu.Ders.ID.Equals(model.Ders)).ToList();
+            List<Soru> sorular = new List<Soru>(); //db.Soru.ToList().Where(x => x.SoruDonemID.Equals(model.Donem) && x.Konu.Ders.ID.Equals(model.Ders)).ToList();
+
+            foreach (var item in db.Soru.ToList().Where(x => x.SoruDonemID.Equals(model.Donem) && x.Konu.Ders.ID.Equals(model.Ders)).ToList())
+            {
+                int puan = 0;
+                if (item.SoruTipi.SoruTipAdi.Equals("Klasik"))
+                {
+                    puan = model.KlasikSoruPuan;
+                }
+                else if (item.SoruTipi.SoruTipAdi.Equals("Test"))
+                {
+                    puan = model.TestSoruPuan;
+                }
+                else if (item.SoruTipi.SoruTipAdi.Equals("Bosluk Doldurma"))
+                {
+                    puan = model.BoslukSoruPuan;
+                }
+                item.Puan = puan;
+                sorular.Add(item);
+
+            }
             List<Soru> lst = new List<Soru>();
 
             lst.AddRange(sorular.Where(x => x.SoruTipi.SoruTipAdi.Equals("Klasik")).OrderBy(x => Guid.NewGuid()).Take(model.KlasikSoruAdet));
