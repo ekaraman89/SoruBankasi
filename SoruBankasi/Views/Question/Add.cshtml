@@ -123,7 +123,7 @@
                             $('#Konu').empty().append('<option selected="selected" value="0">Konu Seçin</option>');
                             $.each(result, function (i, item) {
                                 $('#Konu').append($('<option>', {
-                                    value: item.ID,
+                                    value: item.KonuID,
                                     text: item.KonuAdi
                                 }));
                             });
@@ -135,12 +135,11 @@
 
             $('#Konu').on('change', function () {
                 var i = $(this).prop('selectedIndex') - 1;
-                result[i].KonuSoruDonemi
                 $('#Donem').empty().append('<option selected="selected" value="0">Dönem Seçin</option>');
-                $.each(result[i].KonuSoruDonemi, function (i, item) {
+                $.each(result[i].Donem, function (i, item) {
                     $('#Donem').append($('<option>', {
-                        value: item.SoruDonemi.ID,
-                        text: item.SoruDonemi.SoruDonemAdi
+                        value: item.DonemID,
+                        text: item.DonemAdi
                     }));
                 });
             });
