@@ -5,6 +5,7 @@ using SoruBankasi.Models.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using static SoruBankasi.Models.ViewModel.SoruEkleJsonModel;
 
 namespace SoruBankasi.Controllers
 {
@@ -37,7 +38,42 @@ namespace SoruBankasi.Controllers
             SoruBankasiDbContext db = new SoruBankasiDbContext();
             List<Konu> lst = db.Konu.Where(x => x.DersID.Equals(ID)).ToList();
 
-            return JsonConvert.SerializeObject(lst, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
+            List<SoruEkleJsonModel> jsonLst = new List<SoruEkleJsonModel>();
+
+            foreach (var ders in lst)
+            {
+                SoruEkleJsonModel model = new SoruEkleJsonModel();
+                model.KonuID = ders.ID;
+                model.KonuAdi = ders.KonuAdi;
+                foreach (var item in ders.KonuSoruDonemi)
+                {
+                    DonemJson donemJson = new DonemJson();
+                    donemJson.DonemID = item.SoruDonemi.ID;
+                    donemJson.DonemAdi = item.SoruDonemi.SoruDonemAdi;
+                    model.Donem.Add(donemJson);
+                }
+                jsonLst.Add(model);
+                //model.DersID = ders.DersID;
+                // model.DersAdi = ders.Ders.DersAdi;
+                //foreach (var konu in ders.KonuSoruDonemi)
+                //{
+                //    KonuJson konuJson = new KonuJson();
+                //    konuJson.KonuID = konu.KonuID;
+                //    konuJson.KonuAdi = konu.Konu.KonuAdi;
+
+                //    foreach (var item in konu.SoruDonemi.KonuSoruDonemi)
+                //    {
+                //        DonemJson donemJson = new DonemJson();
+                //        donemJson.DonemID = item.SoruDonemi.ID;
+                //        donemJson.DonemAdi = item.SoruDonemi.SoruDonemAdi;
+                //        konuJson.Donem.Add(donemJson);
+                //    }
+                //    model.Konular.Add(konuJson);
+                //    jsonLst.Add(model);
+                //}
+            }
+            return JsonConvert.SerializeObject(jsonLst);
+            //return JsonConvert.SerializeObject(lst, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
         }
 
 
