@@ -256,6 +256,7 @@
     <Compile Include="Models\SoruDonemi.cs" />
     <Compile Include="Models\SoruTipi.cs" />
     <Compile Include="Models\ViewModel\SinavHazirlamaViewModel.cs" />
+    <Compile Include="Models\ViewModel\SoruEkleJsonModel.cs" />
     <Compile Include="Models\ViewModel\SoruEkleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
