@@ -16,6 +16,13 @@ namespace SoruBankasi.Controllers
         {
             SoruBankasiDbContext db = new SoruBankasiDbContext();
             List<Soru> questions = db.Soru.ToList();
+
+            if (!User.IsInRole("Admin"))
+            {
+                int userID = db.Kullanici.Single(x => x.KullaniciAdi.Equals(User.Identity.Name)).ID;
+                int[] userLessons = db.KullaniciDers.Where(x => x.KullaniciID.Equals(userID)).Select(x => x.DersID).ToArray();
+                questions = questions.Where(x => userLessons.Contains(x.Konu.DersID)).ToList();
+            }
             return View(questions);
         }
 
